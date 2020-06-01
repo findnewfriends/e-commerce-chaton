@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :join_order_items
-  resources :orders
+  #resources :orders
   resources :carts
   resources :items
   devise_for :users
