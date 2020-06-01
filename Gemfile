@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe'
+gem 'rspec'
 
 # Test SSH3 < (antu)
 
