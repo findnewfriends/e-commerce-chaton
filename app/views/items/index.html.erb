@@ -21,6 +21,20 @@
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= form_for @cart do |f| %>
+          <%= f.hidden_field :user, :value => current_user.id %>
+          <%= f.hidden_field :item, :value => item.id %>
+          <div class="form-group">
+            <%= f.label :Qty %><br />
+            <%= f.number_field :quantity, :value => 1,  class: "form-control" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Add to cart" , class: "btn btn-lg btn-primary btn-block" %>
+          </div>
+          <% end %>
+        </td>
+        
       </tr>
     <% end %>
   </tbody>
