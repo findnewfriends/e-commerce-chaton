@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /carts
   # GET /carts.json
@@ -62,8 +62,6 @@ class CartsController < ApplicationController
   end
 
   private
-
-
     def cart_params
       cart_params = params.require(:cart).permit(:user, :item, :quantity)
       cart_params[:item] = Item.find(cart_params[:item].to_i)
