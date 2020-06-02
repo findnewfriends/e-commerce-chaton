@@ -4,9 +4,11 @@
     <title>ECommerce</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= yield :stylesheets %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font-Awesome - With Key Alexis -->
+    <script src="https://kit.fontawesome.com/ddc2bafeff.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
