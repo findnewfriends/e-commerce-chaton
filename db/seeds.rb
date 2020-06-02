@@ -17,30 +17,48 @@ User.destroy_all
 ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 1")
 
 #User
-number_users = 5
-number_users.times do
-    User.create(first_name:Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password:Faker::Internet.password)
+
+13.times do |index|
+  u = User.new
+  u.first_name = Faker::Name.first_name
+  u.last_name = Faker::Name.last_name
+  u.email = "kittenpics_#{index}@yopmail.com"
+  u.password = '123456' #Faker::Internet.password
+  puts "User #{index} created" if u.save
 end
 
 #Items
-number_items = 5
-number_items.times do
-    Item.create(name: Faker::Creature::Cat.name, description: Faker::Lorem.paragraph(sentence_count: 15), price: rand(1..30))
+
+133.times do |index|
+    u = Item.new
+    u.name = Faker::Creature::Cat.name
+    u.description = Faker::Lorem.paragraph(sentence_count: 15)
+    u.price = rand(1..30)+0.99
+    puts "Item #{index} created" if u.save
 end
 
 #Carts
-number_carts = 5
-number_carts.times do
-    Cart.create(user_id: rand(1..number_users), item_id: rand(1..number_items), quantity: rand(1..5) )
+
+26.times do |index|
+  u = Cart.new
+  u.user = User.all.sample
+  u.item = Item.all.sample
+  u.quantity = rand(1..5)
+  puts "Cart #{index} created" if u.save
 end
 
 #Orders
-number_orders = 5
-number_orders.times do
-    Order.create(user_id: rand(1..number_users))
+
+12.times do |index|
+  u = Order.new
+  u.user = User.all.sample
+  puts "Order #{index} created" if u.save
 end
 
 #Join items Order
-(number_orders * 2).times do
-    JoinOrderItem.create(item: Item.find(rand(1..number_items)), order: Order.find(rand(1..number_orders)))
+45.times do |index|
+  u = JoinOrderItem.new
+  u.order = Order.all.sample
+  u.item = Item.all.sample
+  puts "JoinOrderItem #{index} created" if u.save
 end

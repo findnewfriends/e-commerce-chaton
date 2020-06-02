@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @carts = Cart.all.where(user:current_user)
   end
 
   # GET /carts/1
@@ -28,10 +28,10 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Item added to cart successfully' }
         format.json { render :show, status: :created, location: @cart }
       else
-        format.html { render :new }
+        format.html { redirect_to items_path, notice: 'Item could not be added to the cart' }
         format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,9 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.require(:cart).permit(:user_id, :item_id, :quantity)
+      cart_params = params.require(:cart).permit(:user, :item, :quantity)
+      cart_params[:item] = Item.find(cart_params[:item].to_i)
+      cart_params[:user] = User.find(cart_params[:user].to_i)
+      return cart_params
     end
 end
