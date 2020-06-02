@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   default_url_options :host => "https://e-commerce-chatons-fnf.herokuapp.com/"
 
   get '/', to: 'items#index'
-  get '/cart', to: 'carts#index'
+  # get '/cart', to: 'carts#index'
 
   #resources :orders
   resources :carts
