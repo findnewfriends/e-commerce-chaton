@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :JoinOrderItem
-  has_many :items, through: :JoinOrderItem
+  has_many :join_order_items
+  has_many :items, through: :join_order_items
 end
