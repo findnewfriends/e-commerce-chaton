@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  default_url_options :host => "https://e-commerce-chatons-fnf.herokuapp.com/"
   #resources :orders
   resources :carts
   resources :items
