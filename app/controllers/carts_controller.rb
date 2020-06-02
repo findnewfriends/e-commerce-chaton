@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @current_user_cart  = Cart.all.where(user:current_user)
   end
 
   # GET /carts/1
@@ -24,7 +24,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(user_id:current_user[:id])
+    @cart = Cart.new(cart_params)
 
     respond_to do |format|
       if @cart.save
@@ -62,11 +62,12 @@ class CartsController < ApplicationController
   end
 
   private
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
+
 
     def cart_params
-      params.require(:cart).permit(:user_id, :item_id, :quantity)
+      cart_params = params.require(:cart).permit(:user, :item, :quantity)
+      cart_params[:item] = Item.find(cart_params[:item].to_i)
+      cart_params[:user] = User.find(cart_params[:user].to_i)
+      return cart_params
     end
 end
