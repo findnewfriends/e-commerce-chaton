@@ -1,19 +1,55 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
+<section id='containerPageShow' class="d-flex align-items-center">
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+  <div class="container mt-5 " id="containerCards">
 
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
+    <div class="row justify-content-center d-flex align-items-center">
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+        <div class="card mb-3" id="cardShowItem" style="">
+          <div class="row no-gutters">
+            <div class="col-5">
+              <%= image_tag("kitten.jpg", class: "bd-placeholder-img", width: "100%", height: "100%", alt:"...") %>
+              <%# <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg> %>
+            </div>
+            <div class="col-7">
+              <div class="card-body ">
+                <h5 class="card-title"><strong><%= @item.name %></strong></h5>
+                <p class="card-text text-justify">
+                  <%= @item.description %>
+                </p>
+                
+                <p class="card-text">
+                  <strong>Price:</strong>
+                  <%= @item.price %>
+                </p>
+                <a href="<%=items_path %>" class="btn mb-2 " id="buttonPurple">Back</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card ml-5" id="addToCart" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= @item.name %></strong></h5>
+            
+            <% if user_signed_in?%>
+              <%= form_for @cart do |f| %>
+                <%= f.hidden_field :user, :value => current_user.id %>
+                <%= f.hidden_field :@item, :value => @item.id %>
+                <div class="form-group">
+                  <%= f.label :Qty %><br />
+                  <%= f.number_field :quantity, :value => 1,  class: "form-control" %>
+                </div>
+                <div class="actions">
+                  <%= f.submit "Add to cart" , class: "btn btn-lg btn-warning btn-block" %>
+                </div>
+              <% end %>
+            <% end%>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+</section>

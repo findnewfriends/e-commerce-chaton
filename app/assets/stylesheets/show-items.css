@@ -1,0 +1,31 @@
+body{
+  background-color: #EFF2F5;
+}
+
+#containerPageShow {
+  height: 100vh;
+}
+
+
+#cardShowItem{
+  box-shadow: 0px 9px 11px -5px rgba(97,83,97,0.13);
+  border: 0px solid #000000;
+  /* border-radius: 10px 10px 10px 10px; */
+  max-width: 770px;
+}
+
+#addToCart{ 
+  box-shadow: 0px 9px 11px -5px rgba(97,83,97,0.13);
+  border: 0px solid #000000;
+  /* border-radius: 10px 10px 10px 10px; */
+  height: 100%;
+}
+
+#buttonPurple{
+  background-color: rgb(166, 169, 221);
+  color: white;
+}
+
+#buttonPurple:hover{
+  background-color: rgb(115, 118, 170);
+}
