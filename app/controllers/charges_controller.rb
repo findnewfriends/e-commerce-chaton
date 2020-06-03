@@ -22,8 +22,7 @@ class ChargesController < ApplicationController
     flash[:error] = e.message
     redirect_to new_charge_path
     
-    #Create Order
-    @order = Order.create(user_id:current_user.id)
+   
 
   end
 
