@@ -29,8 +29,11 @@
 <br>
 
 <% price = 0 %>
+
 <% Cart.all.length.times do |i| %>
+<% if Cart.all[i].user_id == current_user.id%>
 <% price = price + Item.find(Cart.all[i].item_id).price %>
+<% end %>
 <% end %>
 
 <!-- STRIPE CODE -->
