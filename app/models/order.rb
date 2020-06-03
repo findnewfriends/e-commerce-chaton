@@ -7,6 +7,6 @@ class Order < ApplicationRecord
 
   def order_confirmation
     puts "Welcome email is going to be requested next"
-    UserMailer.order_confirmation(self).deliver_now
+    UserMailer.order_confirmation(order.user, self).deliver_now
   end
 end

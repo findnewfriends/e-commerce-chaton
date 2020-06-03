@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
-        UserMailer.order_confirmation(user, order).deliver
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
