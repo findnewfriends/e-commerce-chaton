@@ -10,17 +10,17 @@
   <ul class="sidebar-menu " id="linkHeader">
     <% unless user_signed_in?%>
       <li>
-        <a href="<%= new_user_registration_path %>">S'inscrire</a>
+        <a href="<%= new_user_registration_path %>">Sign up</a>
       </li>
       <li>
-        <a href="<%= new_user_session_path %>">Se connecter</a>
+        <a href="<%= new_user_session_path %>">Sign in</a>
       </li>
     <% else %>
       <li>
-        <a href="<%= user_path(current_user.id)%>">Profil</a>
+        <a href="<%= user_path(current_user.id)%>">Profile</a>
       </li>
       <li>
-        <a href="<%= carts_path %>">Panier</a>
+        <a href="<%= carts_path %>">Cart</a>
       </li>
     <% end %>
   </ul>
@@ -45,7 +45,7 @@
           <article>
             <h2 class="text-secondary"><%= item.name%></h2>
             <p class="text-secondary"><%= item.description[0..40]%>...</p>
-              <button class="btn btn-warning btn-block">Lire plus</button>
+              <button class="btn btn-warning btn-block">Show more</button>
           </article>
         </div>
 
