@@ -1,0 +1,89 @@
+header {
+    position: fixed;
+    top: 0;
+    z-index: 995;
+    background: #fff;
+    width: 280px;
+    height: 100%;
+    padding: 30px;
+    ul#linkHeader{
+        margin-top: 30px;
+        padding: 0;
+        li{
+            list-style-type: none;
+            a{
+                color: #495057 !important;
+            }
+        } 
+    } 
+    ul.list-horizontal-unstyled li {
+        margin: 0 16px 0 0;
+        display: inline-block;
+        i{
+            color: #495057 !important;
+        }
+    }
+}
+
+section.items{
+    padding-left: 280px;
+    height: 100%;
+    .container-fluid .gallery-wrapper.spacing-10 {
+        margin: 0 -15px;
+    }
+    .gallery-wrapper.spacing-10 div[class^="col-"]:not(.row) {
+        margin-bottom: 10px;
+        padding: 0 5px;
+    }
+    .gallery-wrapper .gallery-box .gallery-img a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        background: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        height: 100%;
+        -webkit-transition: ease-out 0.2s;
+        transition: ease-out 0.2s;
+    }
+    div.gallery-box{
+        transition: all 1s ease;
+        &:hover{
+            transform:scale(1.10);
+        }
+        &:hover img{
+            opacity: 0.3;
+        }
+        &:hover div.gallery-img article{
+            opacity: 1;
+        }
+        div.gallery-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            img{
+                position: relative;
+            }
+            article{
+                position: absolute;
+                top: 40%;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                button{
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+}

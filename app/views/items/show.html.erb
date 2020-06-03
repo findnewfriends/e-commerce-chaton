@@ -34,15 +34,15 @@
             
             <% if user_signed_in?%>
               <%= form_for @cart do |f| %>
-                <%= f.hidden_field :user, :value => current_user.id %>
-                <%= f.hidden_field :@item, :value => @item.id %>
-                <div class="form-group">
-                  <%= f.label :Qty %><br />
-                  <%= f.number_field :quantity, :value => 1,  class: "form-control" %>
-                </div>
-                <div class="actions">
-                  <%= f.submit "Add to cart" , class: "btn btn-lg btn-warning btn-block" %>
-                </div>
+              <%= f.hidden_field :user, :value => current_user.id %>
+              <%= f.hidden_field :item, :value => @item.id %>
+              <div class="form-group">
+                <%= f.label :Qty %><br />
+                <%= f.number_field :quantity, :value => 1,  class: "form-control" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Add to cart" , class: "btn btn-lg btn-warning btn-block" %>
+              </div>
               <% end %>
             <% end%>
 
