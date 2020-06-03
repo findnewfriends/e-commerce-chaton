@@ -76,11 +76,6 @@ class CartsController < ApplicationController
       return cart_params
     end
 
-    def cart_price
-      price = 0
-      Cart.all.length.times do i
-        price = price + Item.find(Cart.all[20].item_id).price
-    end
-  end
+    
 
 end
