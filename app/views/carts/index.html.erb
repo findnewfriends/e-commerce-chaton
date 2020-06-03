@@ -33,7 +33,7 @@
 <% price = price + Item.find(Cart.all[i].item_id).price %>
 <% end %>
 
-
+<!-- STRIPE CODE -->
 <%= form_tag charges_path do %>
 <article>
     <% if flash[:error].present? %>
@@ -46,7 +46,15 @@
     </label>
 </article>
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Checkout Stage" data-amount='50000' data-locale="auto"></script>
-<% end %>
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button " data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Checkout" data-amount=<%= price*100 %> data-locale="auto"></script>
 
-<% #link_to 'New Cart', new_cart_path %>
+<!-- replaced stripe default pay button -->
+<button class="btn btn-outline-primary m-1" type="submit">Pay Now</button><br>
+
+<% end %>
+<!-- EMD STRIPE CODE -->
+<style media="screen">
+    .stripe-button-el {
+        display: none
+    }
+</style>
