@@ -5,7 +5,7 @@
 
 <header>
   <div class="sidebar-logo">
-    <h3 class="no-margin"><a href="<%= root_path %>">E-commerce Chatons</a></h3>
+    <h3 class="no-margin"><a href="<%= root_path %>">Find new Kittens</a></h3>
   </div>
   <ul class="sidebar-menu">
     <% unless user_signed_in?%>
@@ -39,8 +39,16 @@
   <% @items.each do |item| %>
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 gallery-box">
     <div class="gallery-img">
-      <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>">
-        <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+      <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>" class="linkItem">
+        <div>
+          <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+          <article>
+            <h2><%= item.name%></h2>
+            <p><%= item.description[0..40]%>...</p>
+            <a href="<%= carts_path %>">Add to cart</a>
+          </article>
+        </div>
+
       </a>
     </div>
   </div>

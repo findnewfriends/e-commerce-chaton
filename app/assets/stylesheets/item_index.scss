@@ -29,14 +29,9 @@ header {
 
 section.items{
     padding-left: 280px;
-    transition: ease-out 0.2s;
     height: 100%;
     .container-fluid .gallery-wrapper.spacing-10 {
         margin: 0 -15px;
-    }
-    .gallery-wrapper .gallery-box .gallery-img {
-        position: relative;
-        overflow: hidden;
     }
     .gallery-wrapper.spacing-10 div[class^="col-"]:not(.row) {
         margin-bottom: 10px;
@@ -55,9 +50,36 @@ section.items{
         -webkit-transition: ease-out 0.2s;
         transition: ease-out 0.2s;
     }
-    div.gallery-img{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    div.gallery-box{
+        transition: all 1s ease;
+        &:hover{
+            transform:scale(1.10);
+        }
+        &:hover img{
+            opacity: 0.3;
+        }
+        &:hover div.gallery-img article{
+            opacity: 1;
+        }
+        div.gallery-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            img{
+                position: relative;
+            }
+            article{
+                position: absolute;
+                top: 40%;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+            }
+        }
     }
+    
+    
 }
