@@ -28,6 +28,12 @@
 
 <br>
 
+<% price = 0 %>
+<% Cart.all.length.times do |i| %>
+<% price = price + Item.find(Cart.all[i].item_id).price %>
+<% end %>
+<%= price %>
+
 <%= form_tag charges_path do %>
 <article>
     <% if flash[:error].present? %>
@@ -36,7 +42,7 @@
     </div>
     <% end %>
     <label class="amount">
-        <span>Subtotal: $5.00</span>
+        <span>Subtotal: $<%= price%></span>
     </label>
 </article>
 

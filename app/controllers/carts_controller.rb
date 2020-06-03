@@ -75,4 +75,12 @@ class CartsController < ApplicationController
       cart_params[:user] = User.find(cart_params[:user].to_i)
       return cart_params
     end
+
+    def cart_price
+      price = 0
+      Cart.all.length.times do i
+        price = price + Item.find(Cart.all[20].item_id).price
+    end
+  end
+
 end
