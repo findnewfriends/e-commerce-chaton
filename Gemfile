@@ -12,6 +12,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe'
 gem 'rspec'
+gem 'cancancan'
 
 # Test SSH3 < (antu)
 
