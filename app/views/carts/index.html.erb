@@ -32,7 +32,6 @@
 <% Cart.all.length.times do |i| %>
 <% price = price + Item.find(Cart.all[i].item_id).price %>
 <% end %>
-<%= price %>
 
 <%= form_tag charges_path do %>
 <article>
