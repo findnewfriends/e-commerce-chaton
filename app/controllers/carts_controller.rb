@@ -27,7 +27,7 @@ class CartsController < ApplicationController
   def create
 
     unless user_signed_in?
-      redirect_to items_path, notice: 'Please log in to add items to the cart'
+      redirect_to items_path, notice: 'Please sign in to add items to the cart'
       return
     end
     @cart = Cart.new(cart_params)
