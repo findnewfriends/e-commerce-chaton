@@ -80,4 +80,7 @@ class CartsController < ApplicationController
       cart_params[:user] = User.find(cart_params[:user].to_i)
       return cart_params
     end
+
+    
+
 end
