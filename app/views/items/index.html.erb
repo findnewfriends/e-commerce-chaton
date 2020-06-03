@@ -5,9 +5,9 @@
 
 <header>
   <div class="sidebar-logo">
-    <h3 class="no-margin"><a href="<%= root_path %>">Find new Kittens</a></h3>
+    <h3 class="no-margin"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
   </div>
-  <ul class="sidebar-menu">
+  <ul class="sidebar-menu " id="linkHeader">
     <% unless user_signed_in?%>
       <li>
         <a href="<%= new_user_registration_path %>">S'inscrire</a>
@@ -43,9 +43,9 @@
         <div>
           <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
           <article>
-            <h2><%= item.name%></h2>
-            <p><%= item.description[0..40]%>...</p>
-            <a href="<%= carts_path %>">Add to cart</a>
+            <h2 class="text-secondary"><%= item.name%></h2>
+            <p class="text-secondary"><%= item.description[0..40]%>...</p>
+              <button class="btn btn-warning btn-block">Lire plus</button>
           </article>
         </div>
 

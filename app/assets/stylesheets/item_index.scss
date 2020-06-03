@@ -1,29 +1,27 @@
 header {
     position: fixed;
     top: 0;
-    overflow: visible;
-        overflow-y: visible;
-    overflow-y: auto;
     z-index: 995;
     background: #fff;
     width: 280px;
     height: 100%;
     padding: 30px;
-    -webkit-transition: ease-out 0.2s;
-    transition: ease-out 0.2s;
-    .sidebar-nav-content .sidebar-menu {
+    ul#linkHeader{
         margin-top: 30px;
         padding: 0;
-    }
-    .sidebar-menu li, .list-horizontal-unstyled.margin-bottom-10 {
-        list-style-type: none;
-    }
-    .sidebar-nav-left .sidebar-nav-toggle, .sidebar-nav-left .sidebar-nav-content {
-        border-right: 1px solid #e6e6e6;
-    }
+        li{
+            list-style-type: none;
+            a{
+                color: #495057 !important;
+            }
+        } 
+    } 
     ul.list-horizontal-unstyled li {
         margin: 0 16px 0 0;
         display: inline-block;
+        i{
+            color: #495057 !important;
+        }
     }
 }
 
@@ -77,9 +75,15 @@ section.items{
                 width: 100%;
                 text-align: center;
                 opacity: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                button{
+                    width: 30%;
+                }
             }
         }
     }
-    
-    
+
 }
