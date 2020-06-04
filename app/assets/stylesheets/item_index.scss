@@ -51,7 +51,7 @@ section.items{
     div.gallery-box{
         transition: all 1s ease;
         &:hover{
-            transform:scale(1.10);
+            transform:scale(1.03);
         }
         &:hover img{
             opacity: 0.3;

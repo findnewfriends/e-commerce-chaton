@@ -5,11 +5,14 @@
 
     <div class="row justify-content-center d-flex align-items-center">
 
-        <div class="card mb-3" id="cardShowItem" style="">
+        <div class="card mb-3" id="cardShowItem">
           <div class="row no-gutters">
             <div class="col-5">
-              <%= image_tag("kitten.jpg", class: "bd-placeholder-img", width: "100%", height: "100%", alt:"...") %>
-              <%# <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg> %>
+              <% if @item.photo.attached?%>
+                <%= image_tag @item.photo, alt: @item.name %>
+              <% else %>
+                <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+              <% end %>
             </div>
             <div class="col-7">
               <div class="card-body ">
@@ -44,6 +47,10 @@
                 <%= f.submit "Add to cart" , class: "btn btn-lg btn-warning btn-block" %>
               </div>
               <% end %>
+            <% else%>
+            <div class="actions">
+              <%= link_to "Sign in to add to cart" , new_user_session_path, class: "btn btn-lg btn-warning btn-block" %>
+            </div>
             <% end%>
 
           </div>
