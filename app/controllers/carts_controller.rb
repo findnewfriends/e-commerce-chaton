@@ -8,6 +8,11 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.all.where(user:current_user)
+    @prices = 0
+
+    @carts.each do |cart|
+      @prices += cart.item.price * cart.quantity
+    end
   end
 
   # GET /carts/1
