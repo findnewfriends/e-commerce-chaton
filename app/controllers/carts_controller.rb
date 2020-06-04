@@ -54,9 +54,11 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+    puts "---------------------------------------------o-o-o-o-o---o-o-o-o-o- params are #{ params}"
+    puts "---------------------------------------------o-o-o-o-o---o-o-o-o-o- cart_params are #{ cart_params}"
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to carts_url, notice: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }

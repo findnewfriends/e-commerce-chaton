@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
 
 rescue_from CanCan::AccessDenied do |exception|
   # flash[:error] = exception.message
+  puts "=============================================="
+  puts "Cancan SAID NO:#{exception}"
+  puts "=============================================="
   redirect_to root_url, notice: 'Access denied'
   # redirect_to items_path, notice: 'Access denied'
 end
