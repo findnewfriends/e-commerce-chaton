@@ -76,12 +76,6 @@ class CartsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
     def cart_params
       cart_params = params.require(:cart).permit(:user, :item, :quantity)
       cart_params[:item] = Item.find(cart_params[:item].to_i)

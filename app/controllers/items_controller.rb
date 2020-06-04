@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
     # authorize! :read, Item
     @items = Item.all
     @cart = Cart.new
-
   end
 
   # GET /items/1
@@ -31,7 +30,6 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -68,13 +66,9 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :description, :price)
+      params.require(:item).permit(:name, :description, :price, :photo)
     end
 end
