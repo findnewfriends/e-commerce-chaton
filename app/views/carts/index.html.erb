@@ -11,7 +11,7 @@
 
       <div class="clearfix"></div>
     </div>
-    <% @carts.each do |cart| %>
+    <% @carts.order(:created_at).each do |cart| %>
     <div class="card-body border border-light">
       <!-- PRODUCT -->
       <div class="row">
@@ -49,7 +49,7 @@
 
 
           <div class="col-2 col-sm-2 col-md-2 text-right d-flex align-items-center">
-            <a class='btn btn-outline-danger' href='<%= cart_path(cart.id) %>' data-confirm='Are you sure?' data-method='DELETE'><i class='fas fa-trash'></i></a>                            </div>
+            <a class='btn text-secondary' href='<%= cart_path(cart.id) %>' data-confirm='Are you sure?' data-method='DELETE'><i class='fas fa-trash'></i></a>                            </div>
           </div>
         </div>
       </div>
