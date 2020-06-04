@@ -1,5 +1,10 @@
+<p id="notice" class='alert-notice '><%= notice %></p>
+<% content_for :stylesheets do %>
+<%= stylesheet_link_tag "item_index" %>
+<% end %>
 <p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
 <h1>Items</h1>
 
 <table>
@@ -35,10 +40,55 @@
         </td>
         
       </tr>
+=======
+<header>
+  <div class="sidebar-logo">
+    <h3 class="no-margin"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
+  </div>
+  <ul class="sidebar-menu " id="linkHeader">
+    <% unless user_signed_in?%>
+      <li>
+        <a href="<%= new_user_registration_path %>">S'inscrire</a>
+      </li>
+      <li>
+        <a href="<%= new_user_session_path %>">Se connecter</a>
+      </li>
+    <% else %>
+      <li>
+        <a href="<%= user_path(current_user.id)%>">Profil</a>
+      </li>
+      <li>
+        <a href="<%= carts_path %>">Panier</a>
+      </li>
+>>>>>>> b0e83dcf0913d08f058552bf4118ef8620617f95
     <% end %>
-  </tbody>
-</table>
+  </ul>
+  <div class="sidebar-bottom">
+  <ul class="list-horizontal-unstyled margin-bottom-10">
+    <li><a href="https://github.com/findnewfriends/e-commerce-chaton"><i class="fab fa-github"></i></a></li>
+  </ul>
+  <p>© 2020 Copyright Projet THP</p>
+  </div><!-- end sidebar-bottom -->
+</header>
 
-<br>
 
-<%= link_to 'New Item', new_item_path %>
+<section class="items container-fluid">
+<div class="row gallery-wrapper spacing-10">
+  <% @items.each do |item| %>
+  <div class="col-12 col-sm-6 col-lg-4 col-xl-3 gallery-box">
+    <div class="gallery-img">
+      <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>" class="linkItem">
+        <div>
+          <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+          <article>
+            <h2 class="text-secondary"><%= item.name%></h2>
+            <p class="text-secondary"><%= item.description[0..40]%>...</p>
+              <button class="btn btn-warning btn-block">Lire plus</button>
+          </article>
+        </div>
+
+      </a>
+    </div>
+  </div>
+  <% end %>
+</div>

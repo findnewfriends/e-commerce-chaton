@@ -25,6 +25,11 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
+
+    unless user_signed_in?
+      redirect_to items_path, notice: 'Please sign in to add items to the cart'
+      return
+    end
     @cart = Cart.new(cart_params)
 
     respond_to do |format|
@@ -75,4 +80,7 @@ class CartsController < ApplicationController
       cart_params[:user] = User.find(cart_params[:user].to_i)
       return cart_params
     end
+
+    
+
 end

@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>ECommerce</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= yield :stylesheets %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font-Awesome - With Key Alexis -->
+    <script src="https://kit.fontawesome.com/ddc2bafeff.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
   <!-- Navbar -->
+<% unless current_page?(controller: 'items', action: 'index') %>
+
 <% if user_signed_in? %> 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,14 +45,15 @@
 <% else %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="btn-group">
-    <a class="btn btn-default text-white" href="<%= new_user_path %>"> Sign up</a>
-        <a class="btn btn-default text-white" href="<%= new_user_session_path %>"> Sign in</a>
+      <a class="btn btn-default text-white" href="<%= new_user_registration_path %>"> Sign up</a>
+      <a class="btn btn-default text-white" href="<%= new_user_session_path %>"> Sign in</a>
     </div>
   </nav>
 
+<% end %>
 <% end %> 
 <!-- FIN Navbar -->
-
     <%= yield %>
-  </body>
+</body>
+
 </html>
