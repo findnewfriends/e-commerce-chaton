@@ -1,12 +1,12 @@
 
 <section id='containerPageShow' class="d-flex align-items-center">
 
-  <div class="container mt-5 " id="containerCards">
+  <div class="container-fluid mt-5 " id="containerCards">
 
     <div class="row justify-content-center d-flex align-items-center">
 
         <div class="card mb-3" id="cardShowItem">
-          <div class="row no-gutters">
+          <div class="row no-gutters" id='row'>
             <div class="col-5">
               <% if @item.photo.attached?%>
                 <%= image_tag @item.photo, alt: @item.name %>

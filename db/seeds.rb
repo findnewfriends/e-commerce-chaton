@@ -31,7 +31,7 @@ end
 
 #Items
 
-24.times do |index|
+23.times do |index|
     u = Item.new
     u.name = Faker::Creature::Cat.name
     u.description = Faker::Lorem.paragraph(sentence_count: 15)
