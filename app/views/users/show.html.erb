@@ -5,7 +5,9 @@
   <div class="container">
     <%= image_tag("kitten_profile.jpg", class: "logo", width: "30%", height: "auto", alt:"logo profile") %>
     <h1>Welcome <%= current_user.email%> !</h1>
-    <a href='<%= edit_user_registration_path %>'>Edit profile</a>
-    <a href='<%= carts_path %>'>Show Carts</a>
+    <div class="flex-center">
+      <a href='<%= edit_user_registration_path %>' class='btn btn-info'>Edit profile</a>
+      <a href='<%= carts_path %>' class='btn btn-info'>Show Carts</a>
+    </div>
   </div>
 </section>

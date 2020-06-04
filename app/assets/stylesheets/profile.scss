@@ -13,5 +13,14 @@ section#profile{
             border-radius: 60%;
             margin-bottom: 0.7em;
         }
+        div.flex-center{
+            width: 50%;
+            justify-content: space-around;
+            margin-top: 1em;
+        }
     }
+}
+.flex-center{
+    display: flex;
+    align-items: center;
 }

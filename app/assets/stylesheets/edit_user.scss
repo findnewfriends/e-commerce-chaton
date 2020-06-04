@@ -1,0 +1,22 @@
+body{
+    text-align: center !important;
+}
+section#edit_user{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form.form-signin{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+div.input.password.optional.user_password.field_with_hint{
+    margin-bottom: 1em;
+}
+input[type="submit"]{
+    margin-top: 1em;
+}
