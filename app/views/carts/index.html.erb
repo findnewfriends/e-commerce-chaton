@@ -63,3 +63,21 @@
       <!-- STRIPE CODE -->
       <%= form_tag charges_path do %>
       <article class="p-1 m-1" style="width:160px;">
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+        <div class="pull-right" style="margin: 5px">
+          Subtotal: <b>€<%= @prices%></b>
+        </div>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button " data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Checkout" data-amount=<%= @prices*100 %> data-locale="auto"></script>
+      <button id="" class="btn btn-warning m-1 pull-right" type="submit">Pay Now</button><br>
+
+      <!-- EMD STRIPE CODE -->
+
+      <% end %>
+    </div>
+  </div>
