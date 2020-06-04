@@ -23,7 +23,9 @@ class ChargesController < ApplicationController
     Cart.all.where(user:current_user).destroy_all
 
     flash[:success] = 'Paiement effecté'
+    Order.create(user_id:current_user.id)
     redirect_to user_path(current_user.id)
+    
   end
 
 end
