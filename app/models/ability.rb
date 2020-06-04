@@ -4,6 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    puts "\nO----------------XXXX----------------THIS IS A CONSOLE NEW PAGE LOAD SEPARATOR-----------------XXXX---------------O\n\n"
     user ||= User.new # guest user (not logged in)
 
     # Everyone:
@@ -11,8 +12,8 @@ class Ability
 
     # Users (also called buyers):
     return unless user.present?
-    can [:show,:edit], User, id: user.id
-    can [:index,:edit,:create], Cart, {user:{id: user.id}}
+    can [:show,:update], User, id: user.id
+    can [:index,:update,:create,:destroy], Cart, {user:{id: user.id}}
 
     # Admins:
     return unless user.admin?  # additional permissions for administrators

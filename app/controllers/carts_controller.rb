@@ -2,8 +2,6 @@ class CartsController < ApplicationController
   # before_action :set_cart, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
-
-
   # GET /carts
   # GET /carts.json
   def index
@@ -42,7 +40,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to items_path, notice: 'Item added to cart successfully' }
+        format.html { redirect_to carts_path, notice: 'Item added to cart successfully' }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { redirect_to items_path, notice: 'Item could not be added to the cart' }
@@ -54,9 +52,11 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+    puts "---------------------------------------------o-o-o-o-o---o-o-o-o-o- params are #{ params}"
+    puts "---------------------------------------------o-o-o-o-o---o-o-o-o-o- cart_params are #{ cart_params}"
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to carts_url, notice: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }
