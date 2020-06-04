@@ -22,10 +22,10 @@ body{
 }
 
 #buttonPurple{
-  background-color: rgb(166, 169, 221);
+  background-color: rgb(125, 115, 170);
   color: white;
 }
 
 #buttonPurple:hover{
-  background-color: rgb(115, 118, 170);
+  background-color: rgb(166, 169, 221);
 }

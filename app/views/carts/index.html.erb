@@ -1,63 +1,109 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Your cart</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price </th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <tbody>
-        <% @carts.each do |cart| %>
-        <tr>
-            <td><%= cart.item.name %></td>
-            <td><%= cart.quantity %></td>
-            <td><%= Item.find(cart.item_id).price %>
-            <td><%= link_to 'Show', cart %></td>
-            <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-            <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
 
-<br>
+<div class="container text-center">
 
-<% price = 0 %>
+   <div class="card shopping-cart">
+   
+            <div class="card-header " id="headerCard">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Shipping cart
+                <a href="<%=items_path %>" class="btn btn-outline-info btn-sm pull-right mb-2 " id="">Back</a>
+                <div class="clearfix"></div>
+            </div>
+          <% @carts.each do |cart| %>  
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    <div class="row">
+                     
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                            <%# <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80"> %>
+                            <%= image_tag("kitten.jpg", id:"imageKitten", class: " img-responsive ", width: "125px", height: "100px", alt:"...") %>
+                        </div>
+                       
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h4 class="product-name"><strong>Product name</strong></h4>
+                            <h4>
+                                <small>Price: <%= Item.find(cart.item_id).price %></small>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                                <h6><strong><%= cart.item.name %> <span class="text-muted">x</span></strong></h6>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4">
+                                <div class="quantity p-1">
+                                    <%= cart.quantity %>
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 text-right">
+                              <a class='btn btn-outline-danger' href='<%= cart_path(cart.id) %>' data-confirm='Are you sure?' data-method='DELETE'><i class='fas fa-trash'></i></a>                            </div>
+                            </div>
+                    </div>
+                    <hr>
+                    <!-- END PRODUCT -->
+                   
+                <div class="pull-right">
+                    <a href="<%= edit_cart_path(cart) %>" class="btn btn-outline-secondary pull-right">
+                        Update shopping cart
+                    </a>
+                </div>
+              
+                <div class="pull-right mr-2">
+                    <a href="<%= cart_path(cart) %>" class="btn btn-outline-secondary pull-right">
+                        Show
+                    </a>
+                </div>
+            </div>
+            <div class="card-footer">  
+            <div class="pull-right" style="margin: 10px">
+  
 
-<% Cart.all.length.times do |i| %>
-<% if Cart.all[i].user_id == current_user.id%>
-<% price = price + Item.find(Cart.all[i].item_id).price %>
-<% end %>
-<% end %>
+     <% price = 0 %>
 
-<!-- STRIPE CODE -->
-<%= form_tag charges_path do %>
-<article>
-    <% if flash[:error].present? %>
-    <div id="error_explanation">
-        <p><%= flash[:error] %></p>
+      <% Cart.all.length.times do |i| %>
+      <% if Cart.all[i].user_id == current_user.id%>
+      <% price = price + Item.find(Cart.all[i].item_id).price %>
+      <% end %>
+      <% end %>
+
+      <!-- STRIPE CODE -->
+      <%= form_tag charges_path do %>
+      <article>
+          <% if flash[:error].present? %>
+          <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+          </div>
+          <% end %>
+          <div class="pull-right" style="margin: 5px">
+            Subtotal: <b>$<%= price%></b>
+          </div>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button " data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Checkout" data-amount=<%= price*100 %> data-locale="auto"></script>
+
+      <!-- replaced stripe default pay button -->
+      <button id="" class="btn btn-warning m-1 pull-right" type="submit">Pay Now</button><br>
+
+      <% end %>
+      <!-- EMD STRIPE CODE -->
+      <style media="screen">
+          .stripe-button-el {
+              display: none
+          }
+      </style>
+
+      </div>
     </div>
     <% end %>
-    <label class="amount">
-        <span>Subtotal: $<%= price%></span>
-    </label>
-</article>
+  </div>
+</div>
+  
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button " data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Checkout" data-amount=<%= price*100 %> data-locale="auto"></script>
-
-<!-- replaced stripe default pay button -->
-<button class="btn btn-outline-primary m-1" type="submit">Pay Now</button><br>
-
-<% end %>
-<!-- EMD STRIPE CODE -->
-<style media="screen">
-    .stripe-button-el {
-        display: none
-    }
-</style>

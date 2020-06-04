@@ -1,3 +1,4 @@
+<div class="container d-flex align-items-center">
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +22,9 @@
     <%= form.text_field :last_name %>
   </div>
 
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-info" %>
   </div>
 <% end %>
+</div>
