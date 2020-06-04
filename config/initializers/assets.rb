@@ -18,3 +18,5 @@ Rails.application.config.assets.paths << Rails.root.join("lib", "assets", "javas
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "javascripts")
 Rails.application.config.assets.precompile += %w( item_index.scss )
+Rails.application.config.assets.precompile += %w( profile.scss )
+Rails.application.config.assets.precompile += %w( edit_user.scss )

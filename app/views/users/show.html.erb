@@ -1,17 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-<br>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "profile" %>
+<% end %>
+<section id="profile">
+  <div class="container">
+    <%= image_tag("kitten_profile.jpg", class: "logo", width: "30%", height: "auto", alt:"logo profile") %>
+    <h1>Welcome <%= current_user.email%> !</h1>
+    <div class="flex-center">
+      <a href='<%= edit_user_registration_path %>' class='btn btn-info'>Edit profile</a>
+      <a href='<%= carts_path %>' class='btn btn-info'>Show Carts</a>
+    </div>
+  </div>
+</section>
 <%= render 'admin_controls' if current_user.admin? %>
