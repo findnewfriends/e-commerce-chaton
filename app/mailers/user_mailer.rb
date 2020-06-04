@@ -12,6 +12,11 @@ def welcome_email(user)
 
   # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
   mail(to: @user.email, subject: 'Bienvenue chez nous !')
+end 
+
+def order_confirmation(user, order)
+  @user = User.find(user.user_id)
+  mail(to: @user.email, subject: 'Order has been received')
 end
 
 end

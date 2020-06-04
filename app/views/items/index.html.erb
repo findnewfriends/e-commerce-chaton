@@ -1,12 +1,10 @@
-<p id="notice" class='alert-notice '><%= notice %></p>
 <% content_for :stylesheets do %>
 <%= stylesheet_link_tag "item_index" %>
 <% end %>
-<p id="notice"><%= notice %></p>
 
 <header>
   <div class="sidebar-logo">
-    <h3 class="no-margin"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
+    <h3 class="no-margin mt-3"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
   </div>
   <ul class="sidebar-menu " id="linkHeader">
     <% unless user_signed_in?%>
