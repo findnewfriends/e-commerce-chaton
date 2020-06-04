@@ -13,7 +13,7 @@ This website is an online store of ~~cute~~ very cute cats pictures, you can :
 
 ## Admin dashboard 
 
-To access the admin dashboard you need to user this login:
+To access the admin dashboard you need to use this login:
 
 Email : kittenpics_admin@yopmail.com
 
