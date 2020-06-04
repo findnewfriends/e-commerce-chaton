@@ -5,7 +5,7 @@
 ##### To see our website click on this link 👉 [e-commerce-chatons](https://e-commerce-chatons-fnf.herokuapp.com/) 
 
 ## Presentation 
-This website is an online store of cute cats pictures, you can : 
+This website is an online store of ~~cute~~ very cute cats pictures, you can : 
 - see all the pictures on the main page 
 - add the one you like in your cart 
 - buy the picture with stripe 
