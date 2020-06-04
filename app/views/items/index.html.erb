@@ -40,11 +40,7 @@
     <div class="gallery-img">
       <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>" class="linkItem">
         <div>
-          <%if item.photo.attached?%>
-            <%= url_for(image_tag item.photo), alt: "kitten #{index}" %>
-          <%else%>
-            <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
-          <%end%>
+          <img src='<%=item.url %>' alt="kittens image">
           <article>
             <h2 class="text-secondary"><%= item.name%></h2>
             <p class="text-secondary"><%= item.description[0..40]%>...</p>

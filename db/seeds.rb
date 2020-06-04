@@ -31,12 +31,25 @@ end
 
 #Items
 
-23.times do |index|
+
+chat = []
+chat[0] = 'http://somestuff.online/imgs-kittens/kitten_001.jpg'
+chat[1] = 'http://somestuff.online/imgs-kittens/kitten_002.jpg'
+chat[2] = 'http://somestuff.online/imgs-kittens/kitten_003.jpg'
+chat[3] = 'http://somestuff.online/imgs-kittens/kitten_004.jpg'
+chat[4] = 'http://somestuff.online/imgs-kittens/kitten_005.jpg'
+chat[5] = 'http://somestuff.online/imgs-kittens/kitten_006.jpg'
+chat[6] = 'http://somestuff.online/imgs-kittens/kitten_007.jpg'
+chat[7] = 'http://somestuff.online/imgs-kittens/kitten_008.jpg'
+chat[8] = 'http://somestuff.online/imgs-kittens/kitten_009.jpg'
+chat[9] = 'http://somestuff.online/imgs-kittens/kitten_010.jpg'
+10.times do |index|
     u = Item.new
     u.name = Faker::Creature::Cat.name
     u.description = Faker::Lorem.paragraph(sentence_count: 15)
     u.price = rand(1..30)+0.99
-    u.photo.attach(io: File.open("app/assets/images/kitten_#{index + 1}.jpg"), filename: "kitten #{index}",content_type: 'image/jpg')
+    u.url = chat[index]
+    #u.photo.attach(io: File.open("app/assets/images/kitten_#{index + 1}.jpg"), filename: "kitten #{index}",content_type: 'image/jpg')
     puts "Item #{index} created" if u.save
 end
 

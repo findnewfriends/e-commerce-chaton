@@ -8,11 +8,7 @@
         <div class="card mb-3" id="cardShowItem">
           <div class="row no-gutters" id='row'>
             <div class="col-5">
-              <% if @item.photo.attached?%>
-                <%= image_tag @item.photo, alt: @item.name %>
-              <% else %>
-                <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
-              <% end %>
+              <img src='<%=@item.url %>' alt="kittens image">
             </div>
             <div class="col-7">
               <div class="card-body ">
