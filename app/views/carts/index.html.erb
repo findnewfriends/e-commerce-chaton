@@ -9,6 +9,9 @@
       <!-- <%= link_to "Back", items_path, class:"btn btn-outline-info btn-sm pull-right mb-2 " %> -->
 
     </div>
+    <% if @carts.length == 0%>
+    <p class="text-center">You add anything in your carts</p>
+    <% end%>
     <% @carts.order(:created_at).each do |cart| %>
     <div class="card-body border border-light">
       <!-- PRODUCT -->
