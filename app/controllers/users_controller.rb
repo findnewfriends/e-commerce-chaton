@@ -12,6 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if @user.admin?
+      @orders = Order.all
+      @users = User.all
+      @items = Item.all
+    end
   end
 
   # GET /users/new
