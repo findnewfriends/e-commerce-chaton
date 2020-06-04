@@ -4,6 +4,13 @@
 
 ##### To see our website click on this link 👉 [e-commerce-chatons](https://e-commerce-chatons-fnf.herokuapp.com/) 
 
+## Presentation 
+This website is an online store of ~~cute~~ very cute cats pictures, you can : 
+- see all the pictures on the main page 
+- add the one you like in your cart 
+- buy the picture with stripe 
+- receive a confirmation email after the payment 
+
 ## Admin dashboard 
 
 To access the admin dashboard you need to user this login:
@@ -11,13 +18,6 @@ To access the admin dashboard you need to user this login:
 Email : kittenpics_admin@yopmail.com
 
 Password : 123123
-
-## Presentation 
-This website is an online store of ~~cute~~ very cute cats pictures, you can : 
-- see all the pictures on the main page 
-- add the one you like in your cart 
-- buy the picture with stripe 
-- receive a confirmation email after the payment 
 
 ## Database
 
