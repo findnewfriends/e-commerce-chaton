@@ -17,8 +17,8 @@
       <div class="row">
 
         <div class="col-12 col-sm-12 col-md-2 text-center">
-            <%if item.photo.attached?%>
-            <%= image_tag item.photo, alt: "kitten #{index}" %>
+            <%if cart.item.photo.attached?%>
+            <%= image_tag cart.item.photo, alt: "kitten" %>
           <%else%>
             <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
           <%end%>
