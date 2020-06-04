@@ -53,6 +53,41 @@
 <% end %>
 <% end %> 
 <!-- FIN Navbar -->
+
+<!-- FLASH NOTIFICATIONS -->
+
+    <% if flash[:success] %>
+    <div class="alert alert-success navbar navbar-fixed-top" >
+      <%= flash[:success] %>
+    </div>
+    <% end %>
+
+    <% if flash[:danger] %>
+    <div class="alert alert-danger navbar ">
+      <%= flash[:danger] %>
+    </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+    <div class="alert alert-success ">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <div class="alert alert-warning">
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+    <% if flash[:error] %>
+    <div class="alert alert-danger">
+      <%= flash[:error] %>
+    </div>
+    <% end %>
+
+<!-- END FLASH NOTIFICATIONS -->
+
     <%= yield %>
 </body>
 
