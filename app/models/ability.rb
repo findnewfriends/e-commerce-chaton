@@ -4,16 +4,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    puts "initialize was run ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     user ||= User.new # guest user (not logged in)
 
     # Everyone:
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx NOT logged user.id = #{user.id}"
     can :read, Item
 
     # Users (also called buyers):
     return unless user.present?
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx logged user.id = #{user.id}"
     can [:show,:edit], User, id: user.id
     can [:index,:edit,:create], Cart, {user:{id: user.id}}
 
