@@ -1,5 +1,8 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  # before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
+
 
   # GET /carts
   # GET /carts.json
@@ -81,6 +84,6 @@ class CartsController < ApplicationController
       return cart_params
     end
 
-    
+
 
 end

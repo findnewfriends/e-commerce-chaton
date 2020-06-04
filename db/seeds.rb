@@ -20,10 +20,12 @@ ActiveRecord::Base.connection.execute("ALTER SEQUENCE users_id_seq RESTART WITH 
 
 13.times do |index|
   u = User.new
+  u.role = "admin" if index == 0
   u.first_name = Faker::Name.first_name
   u.last_name = Faker::Name.last_name
   u.email = "kittenpics_#{index}@yopmail.com"
-  u.password = '123456' #Faker::Internet.password
+  u.email = "kittenpics_admin@yopmail.com" if index == 0
+  u.password = '123123' #Faker::Internet.password
   puts "User #{index} created" if u.save
 end
 
