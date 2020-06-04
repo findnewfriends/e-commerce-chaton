@@ -11,6 +11,14 @@ This website is an online store of ~~cute~~ very cute cats pictures, you can :
 - buy the picture with stripe 
 - receive a confirmation email after the payment 
 
+## Admin dashboard 
+
+To access the admin dashboard you need to use this login:
+
+Email : kittenpics_admin@yopmail.com
+
+Password : 123123
+
 ## Database
 
 ![BDD](app/assets/images/BDD.png)
