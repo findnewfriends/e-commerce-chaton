@@ -1,12 +1,10 @@
-<p id="notice" class='alert-notice '><%= notice %></p>
 <% content_for :stylesheets do %>
 <%= stylesheet_link_tag "item_index" %>
 <% end %>
-<p id="notice"><%= notice %></p>
 
 <header>
   <div class="sidebar-logo">
-    <h3 class="no-margin"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
+    <h3 class="no-margin mt-3"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
   </div>
   <ul class="sidebar-menu " id="linkHeader">
     <% unless user_signed_in?%>
@@ -34,12 +32,16 @@
 
 <section class="items container-fluid">
 <div class="row gallery-wrapper spacing-10">
-  <% @items.each do |item| %>
+  <% @items.each do |item, index| %>
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 gallery-box">
     <div class="gallery-img">
       <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>" class="linkItem">
         <div>
-          <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+          <%if item.photo.attached?%>
+            <%= image_tag item.photo, alt: "kitten #{index}" %>
+          <%else%>
+            <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+          <%end%>
           <article>
             <h2 class="text-secondary"><%= item.name%></h2>
             <p class="text-secondary"><%= item.description[0..40]%>...</p>
