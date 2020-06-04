@@ -16,3 +16,15 @@
  *= require cart-index.css
  *= require main.css
 */
+
+/* Navbar */
+img.img-logo{
+    width: 25%;
+}
+a.nav-item, nav a:first-of-type{
+    transition: all 1s ease;
+
+}
+a.nav-item:hover, nav a:first-of-type:hover{
+    transform:scale(1.02);
+}
