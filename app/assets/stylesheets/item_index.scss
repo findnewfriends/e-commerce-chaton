@@ -25,10 +25,10 @@ header {
             a{
                 color: #495057 !important;
                 text-decoration: none;
-                
+
             }
-        } 
-    } 
+        }
+    }
     ul.list-horizontal-unstyled li {
         margin: 0 16px 0 0;
         display: inline-block;
@@ -109,11 +109,10 @@ section.items{
 /* FLASH NOTIF INDEX PAGE */
 .alert-success, .alert-notice{
     opacity: 0.80;
-    position:fixed; 
-    top: 0px; 
-    left: 0px; 
+    position:fixed;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    z-index:9999; 
+    z-index:9999;
     border-radius:0px;
   }
-  

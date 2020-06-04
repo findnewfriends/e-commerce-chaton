@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<div class="container text-center">
+<div class="container">
 
   <div class="card shopping-cart">
 
     <div class="card-header" id="headerCard">
 
-      <p class="my-3"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</p>
+      <p class="my-3 text-center"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</p>
       <!-- <%= link_to "Back", items_path, class:"btn btn-outline-info btn-sm pull-right mb-2 " %> -->
 
-      <div class="clearfix"></div>
     </div>
     <% @carts.order(:created_at).each do |cart| %>
     <div class="card-body border border-light">
@@ -18,7 +16,7 @@
 
         <div class="col-12 col-sm-12 col-md-2 text-center">
             <%if cart.item.photo.attached?%>
-            <%= image_tag cart.item.photo, alt: "kitten" %>
+            <%= image_tag cart.item.photo, alt: "kitten", class:"w-100" %>
           <%else%>
             <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
           <%end%>
@@ -59,7 +57,7 @@
       <% end %>
 
     </div>
-    <div class="card-footer d-flex justify-content-end">
+    <div class="card-footer d-flex justify-content-end text-center">
 
 
     <% unless @prices == 0 %>
