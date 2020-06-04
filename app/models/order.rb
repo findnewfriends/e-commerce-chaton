@@ -6,7 +6,6 @@ class Order < ApplicationRecord
   after_create :order_confirmation
 
   def order_confirmation
-    puts "Welcome email is going to be requested next"
-    UserMailer.order_confirmation(order.user, self).deliver_now
+    UserMailer.order_confirmation(self, self).deliver_now
   end
 end
