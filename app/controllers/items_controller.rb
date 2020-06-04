@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  # before_action :set_item, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  # skip_authorization_check :only => [:index,:show]
 
   # GET /items
   # GET /items.json
   def index
+    # authorize! :read, Item
     @items = Item.all
     @cart = Cart.new
 

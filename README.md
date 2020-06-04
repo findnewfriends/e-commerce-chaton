@@ -1,24 +1,38 @@
-# README
+# Project : FindNewKittens
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![kitten](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7UWCmjWZnzbz9nccpSfjFwVuW171CeIimputSqnlczAF6ZjSqag&s)
 
-Things you may want to cover:
+##### To see our website click on this link 👉 [e-commerce-chatons](https://e-commerce-chatons-fnf.herokuapp.com/) 
 
-* Ruby version
+## Presentation 
+This website is an online store of ~~cute~~ very cute cats pictures, you can : 
+- see all the pictures on the main page 
+- add the one you like in your cart 
+- buy the picture with stripe 
+- receive a confirmation email after the payment 
 
-* System dependencies
+## Database
 
-* Configuration
+![BDD](app/assets/images/BDD.png)
 
-* Database creation
+## Clone & Setup
 
-* Database initialization
+- 👯 Clone this repo to your local machine using: `git clone https://github.com/findnewfriends/e-commerce-chaton.git`
 
-* How to run the test suite
+- Then, do the following commands : 
+    - `bundle install`
+    - ` rails db:create`
+    - `rails db:migrate`
+    -  `rails db:seed`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Our Team
 
-* Deployment instructions
+Alexis Lafrance => https://github.com/alafrance
 
-* ...
+Antu Nehuen => https://github.com/katehuen
+
+Tomaz Medrado => https://github.com/tmedrado
+
+Valentin Figueiredo => https://github.com/Valentinmf 
+
+Virginie Lenoir => https://github.com/Virginie-lnr 

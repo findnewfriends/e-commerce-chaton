@@ -1,15 +1,30 @@
-<p id="notice" class='alert-notice '><%= notice %></p>
 <% content_for :stylesheets do %>
 <%= stylesheet_link_tag "item_index" %>
 <% end %>
-<p id="notice"><%= notice %></p>
 
-
-
-  <div class="sidebar-bottom">
-  <ul class="list-horizontal-unstyled margin-bottom-10">
-    <li><a href="https://github.com/findnewfriends/e-commerce-chaton"><i class="fab fa-github"></i></a></li>
+<header>
+  <div class="sidebar-logo">
+    <h3 class="no-margin mt-3"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
+  </div>
+  <ul class="sidebar-menu " id="linkHeader">
+    <% unless user_signed_in?%>
+      <li>
+        <a href="<%= new_user_registration_path %>">Sign up</a>
+      </li>
+      <li>
+        <a href="<%= new_user_session_path %>">Sign in</a>
+      </li>
+    <% else %>
+      <li>
+        <a href="<%= user_path(current_user.id)%>">Profile</a>
+      </li>
+      <li>
+        <a href="<%= carts_path %>">Cart</a>
+      </li>
+    <% end %>
   </ul>
+  <div class="sidebar-bottom">
+
   <p>© 2020 Copyright Projet THP</p>
   </div><!-- end sidebar-bottom -->
 </header>
@@ -17,16 +32,20 @@
 
 <section class="items container-fluid">
 <div class="row gallery-wrapper spacing-10">
-  <% @items.each do |item| %>
+  <% @items.each do |item, index| %>
   <div class="col-12 col-sm-6 col-lg-4 col-xl-3 gallery-box">
     <div class="gallery-img">
       <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>" class="linkItem">
         <div>
-          <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+          <%if item.photo.attached?%>
+            <%= image_tag item.photo, alt: "kitten #{index}" %>
+          <%else%>
+            <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
+          <%end%>
           <article>
             <h2 class="text-secondary"><%= item.name%></h2>
             <p class="text-secondary"><%= item.description[0..40]%>...</p>
-              <button class="btn btn-warning btn-block">Lire plus</button>
+              <button class="btn btn-warning btn-block">Show more</button>
           </article>
         </div>
 

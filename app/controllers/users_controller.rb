@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
 
   # GET /users
   # GET /users.json
@@ -10,6 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if @user.admin?
+      @orders = Order.all
+      @users = User.all
+      @items = Item.all
+    end
   end
 
   # GET /users/new
@@ -40,6 +47,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    puts "================================================"
+    puts "current user is admin = #{@user.admin?}"
+    puts "================================================"
+    puts "can? :manage, User = #{can? :manage, User}"
+    puts "================================================"
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -69,6 +81,8 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
     end
+
+
 end
