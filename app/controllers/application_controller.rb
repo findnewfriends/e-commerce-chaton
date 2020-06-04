@@ -1,9 +1,25 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+# If I want CanCanCan to authorize all resournces:
+  # check_authorization
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
-  end
+
+
+
+
+rescue_from CanCan::AccessDenied do |exception|
+  # flash[:error] = exception.message
+  puts "=============================================="
+  puts "Cancan SAID NO:#{exception}"
+  puts "=============================================="
+  redirect_to root_url, notice: 'Access denied'
+  # redirect_to items_path, notice: 'Access denied'
+end
+
+# rescue_from CanCan::AuthorizationNotPerformed do |exception|
+#   flash[:error] = exception.message
+#   redirect_to new_user_session_path
+#   redirect_to root_url
+# end
+
 end

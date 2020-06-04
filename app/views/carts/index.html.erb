@@ -1,31 +1,84 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Your cart</h1>
+<div class="container">
 
-<table>
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+  <div class="card shopping-cart">
 
-        <tbody>
-          <% @current_user_cart .each do |cart| %>
-          <tr>
-            <td><%= "#{cart.user.first_name} #{cart.user.last_name}" %></td>
-            <td><%= cart.item.name %></td>
-            <td><%= cart.quantity %></td>
-            <td><%= link_to 'Show', cart %></td>
-            <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-            <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="card-header" id="headerCard">
 
-<br>
+      <p class="my-3 text-center"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</p>
+      <!-- <%= link_to "Back", items_path, class:"btn btn-outline-info btn-sm pull-right mb-2 " %> -->
 
-<% # link_to 'New Cart', new_cart_path %>
+    </div>
+    <% if @carts.length == 0%>
+    <p class="text-center">You add anything in your carts</p>
+    <% end%>
+    <% @carts.order(:created_at).each do |cart| %>
+    <div class="card-body border border-light">
+      <!-- PRODUCT -->
+      <div class="row">
+
+        <div class="col-12 col-sm-12 col-md-2 text-center">
+          <img src='<%=cart.item.url %>' alt="kittens image">
+        </div>
+        <!-- ITEMS NAME AND DESCRIPTION -->
+        <div class="col-12  col-sm-12 text-md-left col-md-5">
+          <h4 class="product-name"><strong><%= link_to cart.item.name, item_path(cart.item.id) %></strong></h4>
+          <h6 class="text-secondary">
+            <small><%= cart.item.description.truncate(200) %></small>
+          </h6>
+        </div>
+        <div class="col-12 col-sm-12 col-md-5  row">
+          <!-- ITEM PRICE PER ITEM -->
+          <div class="col-3 col-sm-3 col-md-5 text-md-right d-flex align-items-center" style="padding-top: 5px">
+            <h6><strong>€ <%= Item.find(cart.item_id).price %>/license <span class="text-muted"> x</span></strong></h6>
+          </div>
+          <!-- QUANTITY OF ITEM -->
+
+          <div class="col-4 col-sm-4 col-md-5 d-inline-flex justify-content-sm-center align-items-center">
+            <%= form_with model: Cart.find(cart.id), class:"row" do |f| %>
+            <fieldset  class="col-6 pt-1">
+              <%= f.hidden_field :item, :value => cart.item.id %>
+              <%= f.hidden_field :user, :value => current_user.id %>
+              <%= f.number_field :quantity, :value => cart.quantity,  class: "w-100 border border-light" %>
+            </fieldset >
+            <fieldset  class="col-6">
+              <%= f.submit "Update"  , class: "btn text-secondary" %>
+            </fieldset >
+            <% end %>
+          </div>
+
+
+          <div class="col-2 col-sm-2 col-md-2 text-right d-flex align-items-center">
+            <a class='btn text-secondary' href='<%= cart_path(cart.id) %>' data-confirm='Are you sure?' data-method='DELETE'><i class='fas fa-trash'></i></a>                            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+    <div class="card-footer d-flex justify-content-end text-center">
+
+
+    <% unless @prices == 0 %>
+      <!-- STRIPE CODE -->
+      <%= form_tag charges_path do %>
+      <article class="p-1 m-1" style="width:160px;">
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+        <div class="pull-right" style="margin: 5px">
+          Subtotal: <b>€<%= @prices%></b>
+        </div>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button " data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Checkout" data-amount=<%= @prices*100 %> data-locale="auto"></script>
+      <button id="" class="btn btn-warning m-1 pull-right" type="submit">Pay Now</button><br>
+
+      <!-- EMD STRIPE CODE -->
+
+      <% end %>
+    <% end %>
+    </div>
+  </div>

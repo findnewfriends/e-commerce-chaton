@@ -1,0 +1,62 @@
+body{
+  background-color: #EFF2F5;
+
+}
+
+#containerPageShow {
+  height: 100vh;
+}
+
+
+#cardShowItem{
+  box-shadow: 0px 9px 11px -5px rgba(97,83,97,0.13);
+  border: 0px solid #000000;
+  /* border-radius: 10px 10px 10px 10px; */
+}
+@media screen and (min-width: 1000px){
+  #cardShowItem{
+    max-width: 50%;
+  }
+}
+@media screen and (max-width: 700px){
+  div#row{
+    flex-direction: column;
+align-items: center;
+  }
+  div.card-body{
+    text-align: center;
+  }
+}
+
+#cardShowItem div.row.no-gutters div.col-5{
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cardShowItem img{
+  width: 100%;
+  margin: 0.5em ;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#addToCart{
+  box-shadow: 0px 9px 11px -5px rgba(97,83,97,0.13);
+  border: 0px solid #000000;
+  /* border-radius: 10px 10px 10px 10px; */
+  height: 100%;
+}
+
+#buttonPurple{
+  background-color: rgb(125, 115, 170);
+  color: white;
+}
+
+#buttonPurple:hover{
+  background-color: rgb(166, 169, 221);
+}
+
+.stripe-button-el {
+  display: none !important;
+}

@@ -1,15 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ECommerce</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>E-Commerce Kittens</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield :stylesheets %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- Font-Awesome - With Key Alexis -->
+  <script src="https://kit.fontawesome.com/ddc2bafeff.js" crossorigin="anonymous"></script>
 
-  <body>
+
+  <%= favicon_link_tag asset_path('favicons/favicon-32x32.png') %>
+
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <% unless current_page?(root_path) %>
+
+    <% if user_signed_in? %>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag 'logo.png', alt: "logo", class:'img-logo' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+        </ul>
+
+        <div class="btn-group">
+          <a class="nav-item btn btn-default text-white" href="<%= carts_path %>">Cart</a>
+          <a class="nav-item btn btn-default text-white" href="<%= edit_user_registration_path %>">Edit profile</a>
+          <a class="nav-item btn btn-default text-white" href="<%= user_path(current_user) %>">See profile</a>
+          <a class="nav-item btn btn-default text-white" href="<%= destroy_user_session_path %>" data-method="DELETE">Log out</a>
+        </div>
+      </div>
+    </nav>
+
+    <% else %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="btn-group">
+        <a class="btn btn-default text-white" href="<%= new_user_registration_path %>"> Sign up</a>
+        <a class="btn btn-default text-white" href="<%= new_user_session_path %>"> Sign in</a>
+      </div>
+    </nav>
+
+    <% end %>
+    <% end %>
+    <!-- FIN Navbar -->
+
+    <!-- FLASH NOTIFICATIONS -->
+
+    <% if flash[:success] %>
+    <div class="alert alert-success navbar navbar-fixed-top" >
+      <%= flash[:success] %>
+    </div>
+    <% end %>
+
+    <% if flash[:danger] %>
+    <div class="alert alert-danger navbar ">
+      <%= flash[:danger] %>
+    </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+    <div class="alert alert-success ">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <div class="alert alert-warning">
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+    <% if flash[:error] %>
+    <div class="alert alert-danger">
+      <%= flash[:error] %>
+    </div>
+    <% end %>
+
+    <!-- END FLASH NOTIFICATIONS -->
+
     <%= yield %>
   </body>
-</html>
+
+  </html>

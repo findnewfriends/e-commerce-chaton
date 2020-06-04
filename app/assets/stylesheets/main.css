@@ -1,0 +1,3 @@
+.alert-success, .alert-notice, .alert-danger, .alert-warning{
+  opacity: 0.80;
+}

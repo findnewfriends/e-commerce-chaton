@@ -1,22 +1,58 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-    <%= image_tag (@item.photo) %>
-</p>
-<p>
-    <strong>Name:</strong>
-    <%= @item.name %>
-</p>
+<section id='containerPageShow' class="d-flex align-items-center">
 
-<p>
-    <strong>Description:</strong>
-    <%= @item.description %>
-</p>
+  <div class="container-fluid mt-5 " id="containerCards">
 
-<p>
-    <strong>Price:</strong>
-    <%= @item.price %>
-</p>
+    <div class="row justify-content-center d-flex align-items-center">
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+        <div class="card mb-3" id="cardShowItem">
+          <div class="row no-gutters" id='row'>
+            <div class="col-5">
+              <img src='<%=@item.url %>' alt="kittens image">
+            </div>
+            <div class="col-7">
+              <div class="card-body ">
+                <h5 class="card-title"><strong><%= @item.name %></strong></h5>
+                <p class="card-text text-justify">
+                  <%= @item.description %>
+                </p>
+                
+                <p class="card-text">
+                  <strong>Price:</strong>
+                  <%= @item.price %>
+                </p>
+                <a href="<%=items_path %>" class="btn mb-2 " id="buttonPurple">Back</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card ml-5" id="addToCart" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= @item.name %></strong></h5>
+            
+            <% if user_signed_in?%>
+              <%= form_for @cart do |f| %>
+              <%= f.hidden_field :user, :value => current_user.id %>
+              <%= f.hidden_field :item, :value => @item.id %>
+              <div class="form-group">
+                <%= f.label :Qty %><br />
+                <%= f.number_field :quantity, :value => 1,  class: "form-control" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Add to cart" , class: "btn btn-lg btn-warning btn-block" %>
+              </div>
+              <% end %>
+            <% else%>
+            <div class="actions">
+              <%= link_to "Sign in to add to cart" , new_user_session_path, class: "btn btn-lg btn-warning btn-block" %>
+            </div>
+            <% end%>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+</section>
