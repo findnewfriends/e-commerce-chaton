@@ -6,13 +6,26 @@ header {
     width: 280px;
     height: 100%;
     padding: 30px;
+    img{
+        width: 100%;
+        transition: all 1s ease;
+        &:hover{
+            transform:scale(1.05);
+        }
+    }
     ul#linkHeader{
         margin-top: 30px;
         padding: 0;
         li{
             list-style-type: none;
+            transition: all 1s ease;
+                &:hover{
+                    transform:scale(1.05);
+                }
             a{
                 color: #495057 !important;
+                text-decoration: none;
+                
             }
         } 
     } 
@@ -22,6 +35,11 @@ header {
         i{
             color: #495057 !important;
         }
+    }
+    p.copyright{
+        position: absolute;
+        bottom: 1%;
+        left: 5%;
     }
 }
 
