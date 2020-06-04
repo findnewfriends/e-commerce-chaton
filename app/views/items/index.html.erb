@@ -41,7 +41,7 @@
       <a href="<%= item_path(item.id)%>" data-gallery-title="<%= item.name%>" class="linkItem">
         <div>
           <%if item.photo.attached?%>
-            <%= image_tag item.photo, alt: "kitten #{index}" %>
+            <%= image_tag 'kitten_1.jpg', alt: "kitten #{index}" %>
           <%else%>
             <img src="https://image.posterlounge.fr/img/products/650000/649927/649927_poster_l.jpg" alt="<%= item.name %>">
           <%end%>
