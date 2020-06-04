@@ -13,6 +13,19 @@ body{
   border: 0px solid #000000;
   /* border-radius: 10px 10px 10px 10px; */
   max-width: 770px;
+
+}
+#cardShowItem div.row.no-gutters div.col-5{
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cardShowItem img{
+  width: 100%;
+  margin: 0.5em ;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 #addToCart{

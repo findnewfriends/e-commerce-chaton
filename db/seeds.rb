@@ -31,11 +31,12 @@ end
 
 #Items
 
-133.times do |index|
+24.times do |index|
     u = Item.new
     u.name = Faker::Creature::Cat.name
     u.description = Faker::Lorem.paragraph(sentence_count: 15)
     u.price = rand(1..30)+0.99
+    u.photo.attach(io: File.open("app/assets/images/kitten_#{index + 1}.jpg"), filename: "kitten #{index}",content_type: 'image/jpg')
     puts "Item #{index} created" if u.save
 end
 
