@@ -4,65 +4,8 @@
 <% end %>
 <p id="notice"><%= notice %></p>
 
-<<<<<<< HEAD
-<h1>Items</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= item.price %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-          <%= form_for @cart do |f| %>
-          <%= f.hidden_field :item, :value => item.id %>
-          <div class="form-group">
-            <%= f.label :Qty %><br />
-            <%= f.number_field :quantity, :value => 1,  class: "form-control" %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Add to cart" , class: "btn btn-lg btn-primary btn-block" %>
-          </div>
-          <% end %>
-        </td>
-        
-      </tr>
-=======
-<header>
-  <div class="sidebar-logo">
-    <h3 class="no-margin"><a href="<%= root_path %>" class="text-secondary">Find new Kittens</a></h3>
-  </div>
-  <ul class="sidebar-menu " id="linkHeader">
-    <% unless user_signed_in?%>
-      <li>
-        <a href="<%= new_user_registration_path %>">S'inscrire</a>
-      </li>
-      <li>
-        <a href="<%= new_user_session_path %>">Se connecter</a>
-      </li>
-    <% else %>
-      <li>
-        <a href="<%= user_path(current_user.id)%>">Profil</a>
-      </li>
-      <li>
-        <a href="<%= carts_path %>">Panier</a>
-      </li>
->>>>>>> b0e83dcf0913d08f058552bf4118ef8620617f95
-    <% end %>
-  </ul>
   <div class="sidebar-bottom">
   <ul class="list-horizontal-unstyled margin-bottom-10">
     <li><a href="https://github.com/findnewfriends/e-commerce-chaton"><i class="fab fa-github"></i></a></li>
@@ -91,4 +34,4 @@
     </div>
   </div>
   <% end %>
-</div>
+  </div>
