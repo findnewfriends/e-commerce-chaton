@@ -37,8 +37,6 @@ Password : 123123
 
 Alexis Lafrance => https://github.com/alafrance
 
-Antu Nehuen => https://github.com/katehuen
-
 Tomaz Medrado => https://github.com/tmedrado
 
 Valentin Figueiredo => https://github.com/Valentinmf 
